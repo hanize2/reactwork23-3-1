@@ -28,12 +28,12 @@ app.post('/insert', (req, res) => {
     const connection = mysql.createConnection(db_info);
     connection.connect();
     connection.query(
-        "insert into tb_memo (comm) values (?)",
-         [req.body.comm],
-        (error,result,fields)=>{
+        'insert into tb_memo (comm) values (?)',
+        [req.body.comm],
+        (error, result, fields) => {
             console.log(result.insertId);
             res.send(`${result.insertId}`);
-        }
+        },
     );
     connection.end();
     console.log(req.body);
@@ -43,11 +43,14 @@ app.post('/delete', (req, res) => {
     const connection = mysql.createConnection(db_info);
     connection.connect();
     connection.query(
-        "delete from tb_memo where idx = ?", [req.body.key], (error,result,fields)=>{
+        'delete from tb_memo where idx = ?',
+        [req.body.key],
+        (error, result, fields) => {
             if (error) throw error;
-            console.log(result)
-        }
+            console.log(result.insertId);
+        },
     );
+    connection.commit();
     connection.end();
     console.log(req.body);
     res.send('delete');
