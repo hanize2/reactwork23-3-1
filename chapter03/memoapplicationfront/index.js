@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then((data) => { 
                 console.log(data);
                 console.log(button);
+                // 삭제 하고 나서 서버단에 select 다시 해오는걸 했는데
                 const deleteli = button.closest('li');
                 console.log(deleteli);
                 $ul.removeChild(deleteli);
